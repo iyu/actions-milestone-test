@@ -1,0 +1,22 @@
+name: Lint and Test
+on:
+  pull_request:
+  push:
+
+jobs:
+  test:
+    name: Lint and Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - run: npm ci
+      working-directory: ./actions-milestone
+    - run: npm run build
+      working-directory: ./actions-milestone
+    - uses: ./actions-milestone
+      with: 
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        configuration-path: .github/milestone.yml

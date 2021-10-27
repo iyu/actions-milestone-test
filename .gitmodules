@@ -1,0 +1,3 @@
+[submodule "actions-milestone"]
+	path = actions-milestone
+	url = git@github.com:iyu/actions-milestone.git
