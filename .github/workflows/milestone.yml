@@ -1,11 +1,10 @@
-name: Lint and Test
+name: Trigger PR
 on:
   pull_request:
-  push:
 
 jobs:
-  test:
-    name: Lint and Test
+  milestone:
+    name: Add Milestone
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -19,4 +18,5 @@ jobs:
     - uses: ./actions-milestone
       with: 
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
-        configuration-path: .github/milestone.yml
+        configuration-path: .github/milestone.yml@master
+        configuration-repo: iyu/actions-milestone
